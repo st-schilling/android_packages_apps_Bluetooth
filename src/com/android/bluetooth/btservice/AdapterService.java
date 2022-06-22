@@ -218,8 +218,6 @@ public class AdapterService extends Service {
 
     private final ArrayList<DiscoveringPackage> mDiscoveringPackages = new ArrayList<>();
 
-    private static final int TYPE_BREDR = 100;
-
     static {
         classInitNative();
     }
@@ -1227,23 +1225,6 @@ public class AdapterService extends Service {
             BluetoothAdapter.getDefaultAdapter().disableBluetoothGetStateCache();
         }
 
-        @Override
-        public void setBondingInitiatedLocally(BluetoothDevice device, boolean localInitiated,
-                AttributionSource source) {}
-        @Override
-        public boolean isTwsPlusDevice(BluetoothDevice device,
-            AttributionSource attributionSource) { return false; }
-        @Override
-        public String getTwsPlusPeerAddress(BluetoothDevice device,
-            AttributionSource attributionSource) { return null; }
-        @Override
-        public void updateQuietModeStatus(boolean quietMode,
-            AttributionSource attributionSource) {}
-        @Override
-        public int getDeviceType(BluetoothDevice device, AttributionSource source)
-            { return TYPE_BREDR; }
-
-
         public void cleanup() {
             mService = null;
         }
@@ -1835,11 +1816,6 @@ public class AdapterService extends Service {
             }
 
             return service.getRemoteName(device);
-        }
-
-        @Override
-        public boolean isBroadcastActive(AttributionSource attributionSource) {
-            return false;
         }
 
         @Override
